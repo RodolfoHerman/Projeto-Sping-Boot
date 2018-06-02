@@ -25,12 +25,37 @@
 	</properties>
 
 	<dependencies>
+		
+		<!-- O STRATER JPA nos oferece a configuração da conexão com o banco de dados, poupando tempo. Se fosse o SPRING MVC teriamos que realizar tal configuração utilizando as dependencias do HIBERNATE e o JDBC -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency> -->
+
+		<!-- O thymeleaf é a ENGINE de template necessária para renderizar as páginas. Se fosse no SPRING MVC teriamos que configurar a engine de renderização, o SPRING BOOT já possui como padrão o THYMELEAF e poupa um tempo a mais para realizarmos esta configuração -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+	
+		<!-- Para acessar ao banco de dados necessário colocar a dependência necessária, no caso o projeto utiliza a do MySql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -42,7 +67,7 @@
 
 	<build>
 
-		<finalName>${project.artifactId}</finalName>
+		<!-- <finalName>${project.artifactId}</finalName> -->
 
 		<plugins>
 			<plugin>
