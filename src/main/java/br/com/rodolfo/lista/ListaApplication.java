@@ -32,6 +32,10 @@ public class ListaApplication {
 		
 	// 	DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
+	//Em caso de se utilizar o banco de dados Postgresql
+	// dataSource.setDriverClassName("org.postgresql.Driver");
+	// dataSource.setUrl("jdbc:postgresql://localhost:5432/listavip");
+
 	// 	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 	// 	dataSource.setUrl("jdbc:mysql://localhost:3306/lista");
 	// 	dataSource.setUsername("root");

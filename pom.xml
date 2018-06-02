@@ -62,6 +62,18 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Para utilização da auto reinicializção do servidor quando houver modificações no código e utilizar o LiveReload no browser para não precisar de dar refresh na página -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<!-- Em caso de uso do banco de dados Postgresql -->
+		<!-- <dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
+		</dependency> -->
 		
 	</dependencies>
 
