@@ -68,6 +68,13 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
+		<!-- Dependencia para o envio de e-mail -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.5</version>
+		</dependency>
+
 		<!-- Em caso de uso do banco de dados Postgresql -->
 		<!-- <dependency>
 			<groupId>postgresql</groupId>

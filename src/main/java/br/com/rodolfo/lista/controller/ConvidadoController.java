@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodolfo.lista.model.Convidado;
-import br.com.rodolfo.lista.repository.ConvidadoRepository;
+import br.com.rodolfo.lista.service.ConvidadoService;
+import br.com.rodolfo.lista.service.EmailService;
 
 /**
  * ConvidadoCOntroller
@@ -16,9 +17,13 @@ import br.com.rodolfo.lista.repository.ConvidadoRepository;
 @Controller
 public class ConvidadoController {
 
+    //Por padrões de projeto o Controller não acessa o 'REPOSITÓRIO' diretamente, quem faz isso é a camada de serviço. Sendo assim será retirado o objeto de repositório e inserido o de serviço.
     //A anotação 'Autowired' sinaliza que a 'bean' deve ser injetada. (Injeção de dependência)
+    // @Autowired
+    // private ConvidadoRepository repository;
+
     @Autowired
-    private ConvidadoRepository repository;
+    private ConvidadoService convidadoService;
     
     @RequestMapping("/")
     public String index() {
@@ -30,7 +35,7 @@ public class ConvidadoController {
     @RequestMapping("listaconvidados")
     public String listaConvidados(Model model) {
         
-        Iterable<Convidado> convidados = repository.findAll();
+        Iterable<Convidado> convidados = convidadoService.buscarTodos();
 
         //Utiliza o model para atribuir o valor e envia-lo para a view
         model.addAttribute("convidados", convidados);
@@ -46,9 +51,12 @@ public class ConvidadoController {
                        @RequestParam("telefone") String telefone) {
         
         Convidado convidado = new Convidado(nome, email, telefone);
-        repository.save(convidado);
 
-        Iterable<Convidado> convidados = repository.findAll();
+        //new EmailService().enviarEmail(nome, email);
+
+        convidadoService.salvar(convidado);
+
+        Iterable<Convidado> convidados = convidadoService.buscarTodos();
 
         model.addAttribute("convidados", convidados);
 
