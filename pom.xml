@@ -6,7 +6,7 @@
 	<groupId>br.com.rodolfo</groupId>
 	<artifactId>lista</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>lista</name>
 	<description>Demo project for Spring Boot</description>
@@ -46,7 +46,23 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+
+
+			<!-- Como o Spring starter web possui depedência pré-configuradas (como o TOMCAT),
+			precisamos excluir essa pré-configuração no starter  -->
+			<!-- <exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions> -->
 		</dependency>
+
+		<!-- Aqui utilizamos outro container o JETTY ao invés do TOMCAT -->
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency> -->
 
 	
 		<!-- Para acessar ao banco de dados necessário colocar a dependência necessária, no caso o projeto utiliza a do MySql -->
@@ -75,18 +91,32 @@
 			<version>1.5</version>
 		</dependency>
 
+
 		<!-- Em caso de uso do banco de dados Postgresql -->
 		<!-- <dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901-1.jdbc4</version>
 		</dependency> -->
+
+		<!-- Necessário colocar essa dependência por causa do HIBERNATE com o JAVA 9+ -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<!-- Para mostrar informações da aplicação quando está rodando em um servidor -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		
 	</dependencies>
 
 	<build>
 
-		<!-- <finalName>${project.artifactId}</finalName> -->
+		<finalName>${project.artifactId}</finalName>
 
 		<plugins>
 			<plugin>
